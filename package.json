@@ -1,56 +1,41 @@
 {
-  "name": "polluters_api",
+  "name": "sandbox",
   "version": "1.0.0",
-  "description": "An api to provide data of worst polluters by year",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "lint": "eslint .",
+    "initdb": "node initDb.js",
+    "start": "cross-env NODE_ENV=production node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": " cross-env NODE_ENV=development nodemon index.js"
   },
-  "lint-staged": {
-    "src/**/*.js": [
-      "eslint",
-      "git add"
-    ],
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "author": "Teemu Kostamo",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@koa/cors": "^3.1.0",
+    "apollo-datasource": "^0.7.3",
     "apollo-server": "^2.19.2",
-    "apollo-server-koa": "^2.19.2",
-    "dataloader": "^2.0.0",
-    "date-fns": "^2.16.1",
+    "apollo-server-express": "^2.19.2",
+    "apollo-server-testing": "^2.19.2",
+    "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
-    "es6-error": "^4.1.1",
-    "esm": "^3.2.25",
     "express": "^4.17.1",
-    "knex": "^0.21.16",
-    "koa": "^2.13.1",
-    "koa-morgan": "^1.0.1",
-    "koa-router": "^10.0.0",
+    "express-rate-limit": "^5.2.3",
+    "graphql": "^15.4.0",
+    "graphql-tag": "^2.11.0",
+    "helmet": "^4.4.1",
+    "hpp": "^0.2.3",
     "lodash": "^4.17.20",
-    "lru-cache": "^6.0.0",
-    "objection": "^2.2.7",
-    "sqlite3": "^5.0.1",
-    "through2": "^4.0.2",
-    "touch": "^3.1.0",
-    "uuid": "^8.3.2",
-    "winston": "^3.3.3",
-    "yup": "^0.32.8"
+    "morgan": "^1.10.0",
+    "nedb": "^1.8.0",
+    "nedb-async": "^0.1.6",
+    "xss-clean": "^0.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.18.0",
     "eslint-plugin-jest": "^24.1.3",
     "husky": "^4.3.8",
