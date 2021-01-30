@@ -4,23 +4,23 @@ const data = [
   {
     year: 1999,
     polluters: [
-      { name: 'usa', total: 50, cement: 15 },
+      { name: 'usa', total: 'unknown', cement: 0 },
       { name: 'russia', total: 100, cement: 25 },
       { name: 'aruba', total: 3, cement: null },
     ],
   },
   {
-    year: 2000,
+    year: 1555,
     polluters: [
       { cement: 4, total: 300, name: 'USA' },
       { name: 'russia', total: 200, cement: 75 },
-      { name: 'aruba', total: 4, cement: 200 },
+      { name: 'aruba', total: 4, cement: 0 },
     ],
   },
   {
     year: 2001,
     polluters: [
-      { cement: 200, total: 400, name: 'USA' },
+      { cement: 200, total: 0, name: 'USA' },
       { name: 'russia', total: 200, cement: 400 },
       { name: 'aruba', total: 4, cement: 2 },
     ],
@@ -101,6 +101,9 @@ const validTop = (number) => {
   }
 };
 
-let number;
+data.sort((a, b) => a.year - b.year);
 
-console.log(validTop(number));
+data.forEach((d) => {
+  let data = _.sortBy(d, (o) => o.total);
+  console.log('yo', data);
+});

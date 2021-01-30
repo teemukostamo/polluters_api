@@ -1,6 +1,6 @@
-const db = require('./db');
+const db = require('../config/db');
 const _ = require('lodash');
-const ErrorResponse = require('./errorResponse');
+const ErrorResponse = require('../utils/errorResponse');
 
 const validFrom = (number) => {
   if (number > 1750 && number < 2015) {
@@ -110,7 +110,7 @@ exports.getPolluters = async (req, res, next) => {
     r.polluters.forEach((polluter) => {
       let result = _(polluter)
         .pick(_.keys(resultModel))
-        .pickBy(_.identity)
+        .omitBy(_.isNil)
         .value();
       polluters.push(result);
     });

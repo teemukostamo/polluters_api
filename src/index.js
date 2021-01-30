@@ -1,5 +1,5 @@
 const http = require('http');
-const config = require('./config');
+const config = require('./config/config');
 const app = require('./app');
 
 const server = http.createServer(app);

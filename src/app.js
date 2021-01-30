@@ -5,11 +5,11 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const morgan = require('morgan');
 const { ApolloServer } = require('apollo-server-express');
-const PollutersAPI = require('./datasource');
-const typeDefs = require('./schema');
-const resolvers = require('./resolvers');
-const { getPolluters } = require('./controllers');
-const errorHandler = require('./error');
+const PollutersAPI = require('./graphql/datasource');
+const typeDefs = require('./graphql/schema');
+const resolvers = require('./graphql/resolvers');
+const { getPolluters } = require('./rest/controllers');
+const errorHandler = require('./utils/error');
 
 const server = new ApolloServer({
   typeDefs,
@@ -33,12 +33,12 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-app.get('/worst/polluters', getPolluters);
-
 // dev logging middleware
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+app.get('/worst/polluters', getPolluters);
 
 app.use(errorHandler);
 
