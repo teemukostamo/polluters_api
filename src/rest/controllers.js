@@ -1,45 +1,7 @@
 const db = require('../config/db');
 const _ = require('lodash');
 const ErrorResponse = require('../utils/errorResponse');
-
-const validFrom = (number) => {
-  if (number > 1750 && number < 2015) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-const validTop = (number) => {
-  if (number > 0 && number < 101) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-const validType = (type) => {
-  switch (type.toLowerCase()) {
-    case 'total':
-      return true;
-    case 'cement':
-      return true;
-    case 'solidfuel':
-      return true;
-    case 'liquidfuel':
-      return true;
-    case 'gasfuel':
-      return true;
-    case 'gasflaring':
-      return true;
-    case 'percapita':
-      return true;
-    case 'bunkerfuels':
-      return true;
-    default:
-      return false;
-  }
-};
+const { validFrom, validTop, validType } = require('./validators');
 
 exports.getPolluters = async (req, res, next) => {
   const { from, to, top, type } = req.query;
@@ -79,15 +41,6 @@ exports.getPolluters = async (req, res, next) => {
     return next(
       new ErrorResponse(
         'Please add valid parameter to (must be greater than from). If no parameter is provided, polluters until 2014 are shown',
-        400,
-      ),
-    );
-  }
-
-  if (!validFrom(to)) {
-    return next(
-      new ErrorResponse(
-        'Please add valid parameter to (a number between 1752 - 2014)',
         400,
       ),
     );

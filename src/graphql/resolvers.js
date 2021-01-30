@@ -9,7 +9,7 @@ const resolvers = {
     ) => {
       let allData = await dataSources.PollutersAPI.getPolluters(from);
 
-      if (to) {
+      if (to && to > from) {
         allData = allData.filter((element) => element.year <= to);
       }
 
