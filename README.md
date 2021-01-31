@@ -26,8 +26,15 @@ REST endpoint for polluters data can be accessed at `/worst/polluters`. Mandator
 - `from` - the starting year from where results are shown. Must be a number between 1752 and 2014.
 - `type` - what type of pollution data is shown. Available types are:
 
-| Type Name |                                             Description                                              |
-| --------- | :--------------------------------------------------------------------------------------------------: |
-| Total     | Total carbon emissions from fossil fuel consumption and cement production (million metric tons of C) |
+| **Type Name** | **Description**                                                                                      |
+| ------------- | ---------------------------------------------------------------------------------------------------- |
+| `total`       | Total carbon emissions from fossil fuel consumption and cement production (million metric tons of C) |
+| `solidfuel`   | Carbon emissions from solid fuel consumption                                                         |
+| `liquidfuel`  | Carbon emissions from liquid fuel consumption                                                        |
+| `gasfuel`     | Carbon emissions from gas fuel consumption                                                           |
+| `cement`      | Carbon emissions from cement production                                                              |
+| `gasflaring`  | Carbon emissions from gas flaring                                                                    |
+| `percapita`   | Per capita carbon emissions (metric tons of carbon; after 1949 only)                                 |
+| `bunkerfuels` | Carbon emissions from bunker fuels (not included in total)                                           |
 
 ## Graphql endpoint

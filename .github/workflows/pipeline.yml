@@ -31,7 +31,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: polluters-api
           heroku_email: teemu.kostamo@hotmail.com
-          healthcheck: https://polluters-api.herokuapp.com/health
+          healthcheck: https://polluters-api.herokuapp.com/healthcheck
           checkstring: 'ok'
           rollbackonhealthcheckfailed: true
       - uses: actions/checkout@v2
