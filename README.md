@@ -89,7 +89,7 @@ To deploy to Heroku, create a Heroku app and add it as a remote. Run the followi
 - `heroku config:set PORT=4000`
 - `heroku config:set DATABASE_NAME=database.db`
 
-To keep automatic deployment in the CI/CD pipeline, add your Heroku API key to your GitHub repository secrets. Heroku API key is found on Heroku dashboard at `Account settings -> API key`.
+To keep automatic deployment in the CI/CD pipeline, add your Heroku API key to your GitHub repository secrets. Heroku API key is found on Heroku dashboard at `Account settings -> API key`. Change the `heroku_app_name` and `healthcheck` url match the ones of your newly created Heroku app.
 
 # Improvements / Further development
 
