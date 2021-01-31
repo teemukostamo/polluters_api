@@ -46,6 +46,23 @@ app.get('/healthcheck', (req, res) => {
   res.send('ok');
 });
 
+app.get('/', (req, res) => {
+  const response = {
+    message: 'Welcome to Polluters API',
+    graphqlEndpoint: '/graphql',
+    RESTendpoint: '/worst/polluters',
+    RESTparameters: {
+      from: 'MANDATORY - number between 1751 and 2013',
+      type:
+        'MANDATORY - type of pollution, one of the following: total | cement | liquidfuel | gasfuel | gasflaring | percapita | bunkerfuels | solidfuel',
+      to: 'OPTIONAL - number bigger than from and between 1752 and 2014',
+      top: 'OPTIONAL - the number of how many top polluters is shown',
+    },
+  };
+
+  res.send(response);
+});
+
 app.use(errorHandler);
 
 module.exports = app;
