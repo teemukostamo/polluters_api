@@ -29,9 +29,9 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.8.8
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: powerful-headland-78075
+          heroku_app_name: polluters-api
           heroku_email: teemu.kostamo@hotmail.com
-          healthcheck: https://powerful-headland-78075.herokuapp.com/health
+          healthcheck: https://polluters-api.herokuapp.com/health
           checkstring: 'ok'
           rollbackonhealthcheckfailed: true
       - uses: actions/checkout@v2
