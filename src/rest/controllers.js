@@ -1,5 +1,5 @@
-const db = require('../config/db');
 const _ = require('lodash');
+const db = require('../config/db');
 const ErrorResponse = require('../utils/errorResponse');
 const { validFrom, validTop, validType } = require('./validators');
 
@@ -50,18 +50,18 @@ exports.getPolluters = async (req, res, next) => {
     response = response.filter((element) => element.year <= Number(to));
   }
 
-  let resultModel = {
+  const resultModel = {
     country: null,
     [lowerCaseType]: null,
   };
 
-  let filteredResults = [];
+  const filteredResults = [];
 
   response.forEach((r) => {
     const polluters = [];
 
     r.polluters.forEach((polluter) => {
-      let result = _(polluter)
+      const result = _(polluter)
         .pick(_.keys(resultModel))
         .omitBy(_.isNil)
         .value();
@@ -78,7 +78,7 @@ exports.getPolluters = async (req, res, next) => {
 
   filteredResults.sort((a, b) => a.year - b.year);
 
-  res.send(
+  return res.send(
     filteredResults.map((r) => {
       const result = {
         year: r.year,

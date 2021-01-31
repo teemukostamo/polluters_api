@@ -1,6 +1,5 @@
 const {
   readCsv,
-  // verifyCsv,
   isStringMissing,
   isNumberMissing,
 } = require('./src/utils/utils');
@@ -8,17 +7,18 @@ const db = require('./src/config/db');
 
 const savePollutersToDB = () => {
   try {
-    const polluters = readCsv('fossil-fuel-co2-emissions-eviled-1.csv');
+    const lines = readCsv('fossil-fuel-co2-emissions-eviled-1.csv');
     const data = [];
 
-    for (let i = 1; i < polluters.length - 1; i++) {
-      const prevLine = polluters[i - 1].split(',');
-      const line = polluters[i].split(',');
-      const nextLine = polluters[i + 1].split(',');
+    for (let i = 1; i < lines.length - 1; i++) {
+      const prevLine = lines[i - 1].split(',');
+      const line = lines[i].split(',');
+      const nextLine = lines[i + 1].split(',');
 
       let year = line[0];
 
       if (year === '' && nextLine[0] === prevLine[0]) {
+        // eslint-disable-next-line prefer-destructuring
         year = prevLine[0];
       }
 
@@ -50,6 +50,7 @@ const savePollutersToDB = () => {
 
     db.insert(result);
 
+    // eslint-disable-next-line no-unused-expressions
     result.length > 0
       ? console.log(`initialized database with ${result.length} records.`)
       : console.log('problem initializing database');

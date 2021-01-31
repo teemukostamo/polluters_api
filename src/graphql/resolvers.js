@@ -15,12 +15,12 @@ const resolvers = {
 
       allData.sort((a, b) => a.year - b.year);
 
-      let filteredResults = [];
+      const filteredResults = [];
 
       allData.forEach((data) => {
         const filteredPolluters = [];
         data.polluters.forEach((polluter) => {
-          let result = _.mapValues(polluter, (v) => (v === null ? -1 : v));
+          const result = _.mapValues(polluter, (v) => (v === null ? -1 : v));
           filteredPolluters.push(result);
         });
 

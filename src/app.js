@@ -66,19 +66,3 @@ app.get('/', (req, res) => {
 app.use(errorHandler);
 
 module.exports = app;
-
-// Another route that generates a CSV
-// app.get('/generate-csv', generateCSV);
-
-// app.post('/generate-csv-with-data', function(req, res, next) {
-//     var myField = req.body.myField;
-//     //Do stuff with your data before generating csv
-//     req.csvData = myField;
-//     return next();
-// }, generateCSV)
-
-// function generateCSV(req, res, next) {
-//     // Generate your CSV using data from req.csvData
-//     // Then use the res method to return the csv to the user
-//     return res.send();
-// }

@@ -1,17 +1,15 @@
 const validFrom = (number) => {
   if (number > 1750 && number < 2015) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 };
 
 const validTop = (number) => {
   if (number > 0 && number < 101) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 };
 
 const validType = (type) => {

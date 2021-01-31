@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 const errorHandler = (err, req, res, next) => {
-  let error = { ...err };
+  // eslint-disable-next-line node/no-unsupported-features/es-syntax
+  const error = { ...err };
   error.message = err.message;
   // log error to console for dev
   console.log(err);

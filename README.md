@@ -2,7 +2,7 @@
 
 ### An API providing both REST and Graphql endpoints for fetching data on the worst polluters by year.
 
-A Node/Express/Apollo/Graphql application, that fetches data from a corrupt .csv file, and serves the parsed data from both REST and Graphql endpoints sorted by year and worst polluters.
+A Node/Express/Apollo/Graphql application, that fetches data from a corrupt .csv file, and serves the parsed data from both REST and Graphql endpoints sorted by year and worst polluters. App is deployed [here](https://polluters-api.herokuapp.com/).
 
 ## Requirements
 
@@ -34,13 +34,19 @@ Some values are unfortunately corrupt in the source .csv file. Corrupt data are 
 ## Installation / Getting started
 
 - Clone the repository and run `npm install` in the root directory.
-- Create a `.env` file in the root directory and copy the contents of the ´.env.template` file there.
+- Create a `.env` file in the root directory and copy the contents of the `.env.template` file there.
 - Run `npm run initdb`. This will initialize the [NEDB](https://github.com/louischatriot/nedb) database, parse polluter data from the `fossil-fuel-co2-emissions-eviled-1.csv` -file and save to `database.db` -file in the project root directory.
 - Run `npm run dev` to run the server in development mode with `nodemon`
 
+## Tests
+
+Run `npm run test` to run tests.
+
 ## REST endpoint
 
-REST endpoint for polluters data can be accessed at `/worst/polluters`. Mandatory parameters are:
+REST endpoint for polluters data can be accessed at `/worst/polluters`.
+
+Mandatory parameters are:
 
 - `from` - the starting year from where results are shown. Must be a number between 1752 and 2014.
 - `type` - what type of pollution data is shown. Available types are:
@@ -61,7 +67,7 @@ Optional parameters are:
 **Examples**:
 
 - Request `/worst/polluters?from=2011&top=5&type=Total` returns top 5 polluters sorted by total pollution, starting from 2011.
-- Request `/worst/polluters?from=2000&to=2014&type=cement&top=10` returns top 10 polluters sorted by cement production emissions, starting from 2000.
+- Request `/worst/polluters?from=2000&to=2014&type=cement&top=10` returns top 10 polluters sorted by cement production emissions, starting from 2000, ending at 2014.
 
 ## Graphql
 
@@ -71,6 +77,19 @@ GraphQL playground offers documentation on how to use the API. Start the server 
 
 - To build a Docker image of the application, run `docker build -t polluters_api .` in the root directory.
 - To run the container, run `docker run -p 4000:4000 polluters_api`
+
+## CI/CD
+
+The app uses Github Actions for CI/CD. Jobs in the pipeline include running ESLint, tests, pushing the app to Heroku and bumping up the version number. The use of GitHub is required for the pipeline. To remove automatic deployment, delete the `deployment` job from `.github/workflows/pipeline.yml`.
+
+## Deployment
+
+To deploy to Heroku, create a Heroku app and add it as a remote. Run the following commands to set Heroku environment variables:
+
+- `heroku config:set PORT=4000`
+- `heroku config:set DATABASE_NAME=database.db`
+
+To keep automatic deployment in the CI/CD pipeline, add your Heroku API key to your GitHub repository secrets. Heroku API key is found on Heroku dashboard at `Account settings -> API key`.
 
 # Improvements / Further development
 
@@ -87,6 +106,7 @@ Below are listed some further development ideas:
   - MongoDB and Mongoose would be good choices for a document database if database needs remain simple enough.
   - If a more complex database would be required, a relational database would perhaps be a better choice.
 - Caching data for faster performance. Redis for example has solutions for both Apollo and Express servers.
+- Creating a development branch and deployment environment for testing changes before pushing to procution.
 
 Some points of interest beyond the scope of this application include:
 

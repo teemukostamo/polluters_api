@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const PORT = process.env.PORT || 4000;
-const DATABASE_NAME = process.env.DATABASE_NAME;
+const { DATABASE_NAME } = process.env;
 
 module.exports = {
   PORT,

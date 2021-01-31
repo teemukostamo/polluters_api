@@ -28,13 +28,9 @@ const verifyCsv = (array) => {
   return csvValid;
 };
 
-const isStringMissing = (value) => {
-  return value === '' ? 'corrupt data' : value;
-};
+const isStringMissing = (value) => (value === '' ? 'corrupt data' : value);
 
-const isNumberMissing = (value) => {
-  return value === '' ? null : Number(value);
-};
+const isNumberMissing = (value) => (value === '' ? null : Number(value));
 
 module.exports = {
   verifyCsv,
