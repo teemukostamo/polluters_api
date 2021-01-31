@@ -11,21 +11,6 @@ const savePollutersToDB = () => {
     const polluters = readCsv('fossil-fuel-co2-emissions-eviled-1.csv');
     const data = [];
 
-    const test = polluters[1].split(',');
-
-    test.forEach((t) => {
-      console.log(t);
-      console.log(typeof t);
-    });
-
-    const test2 = polluters[9].split(',');
-
-    test2.forEach((t) => {
-      console.log(t);
-      console.log(typeof t);
-      console.log(t === '');
-    });
-
     for (let i = 1; i < polluters.length - 1; i++) {
       const prevLine = polluters[i - 1].split(',');
       const line = polluters[i].split(',');
