@@ -37,8 +37,6 @@ test('missing from parameter gives error', async () => {
     .get('/worst/polluters?type=total&to=2014&top=30')
     .expect(400);
 
-  console.log(result.body);
-
   expect(result.body.success).toBe(false);
   expect(result.body.error).toEqual(
     'Please add valid parameters from (a year between 1751 - 2014) and type (type of pollution, total, cement, solidfuel, liquidfuel, gasfuel, gasflaring, percapita, bunkerfuels)',
@@ -60,8 +58,6 @@ test('to is smaller than from gives error', async () => {
   const result = await api
     .get('/worst/polluters?from=1999&type=total&to=1995')
     .expect(400);
-
-  console.log(result.body);
 
   expect(result.body.success).toBe(false);
   expect(result.body.error).toEqual(
