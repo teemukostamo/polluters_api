@@ -24,6 +24,8 @@ jobs:
         run: npm run build
       - name: test
         run: npm run test
+        env:
+          DATABASE_NAME: database.db
       - name: deployment
         if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message)), '#skip') }}
         uses: akhileshns/heroku-deploy@v3.8.8
