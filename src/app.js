@@ -17,6 +17,8 @@ const server = new ApolloServer({
   dataSources: () => ({
     PollutersAPI: new PollutersAPI(),
   }),
+  introspection: true,
+  playground: true,
 });
 
 const app = express();
