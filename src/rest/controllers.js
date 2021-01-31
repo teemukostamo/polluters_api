@@ -6,7 +6,7 @@ const { validFrom, validTop, validType } = require('./validators');
 exports.getPolluters = async (req, res, next) => {
   const { from, to, top, type } = req.query;
 
-  if (!from || !validType(type) || !validFrom(Number(from))) {
+  if (!from || !type || !validType(type) || !validFrom(Number(from))) {
     return next(
       new ErrorResponse(
         'Please add valid parameters from (a year between 1751 - 2014) and type (type of pollution, total, cement, solidfuel, liquidfuel, gasfuel, gasflaring, percapita, bunkerfuels)',

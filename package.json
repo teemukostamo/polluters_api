@@ -7,7 +7,7 @@
     "lint": "eslint ./src",
     "initdb": "node seeder.js",
     "start": "cross-env NODE_ENV=production node src",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cross-env NODE_ENV=test jest --verbose --detectOpenHandles --runInBand",
     "dev": " cross-env NODE_ENV=development nodemon src"
   },
   "lint-staged": {
@@ -36,7 +36,6 @@
     "apollo-datasource": "^0.7.3",
     "apollo-server": "^2.19.2",
     "apollo-server-express": "^2.19.2",
-    "apollo-server-testing": "^2.19.2",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -54,6 +53,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
+    "apollo-server-testing": "^2.19.2",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.3",
     "eslint": "^7.18.0",
