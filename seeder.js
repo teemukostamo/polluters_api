@@ -36,62 +36,6 @@ const savePollutersToDB = () => {
       if (year === '' && nextLine[0] === prevLine[0]) {
         year = prevLine[0];
       }
-      // let doc = {
-      //   year,
-      //   country: isStringMissing(line[1]),
-      // };
-
-      // if (line[2] !== '') {
-      //   doc.total = isNumberMissing(line[2]);
-      // }
-      // if (line[3] !== '') {
-      //   doc = {
-      //     ...doc,
-      //     solidfuel: isNumberMissing(line[3]),
-      //   };
-      // }
-
-      // if (line[4] !== '') {
-      //   doc = {
-      //     ...doc,
-      //     liquidfuel: isNumberMissing(line[4]),
-      //   };
-      // }
-
-      // if (line[5] !== '') {
-      //   doc = {
-      //     ...doc,
-      //     gasfuel: isNumberMissing(line[5]),
-      //   };
-      // }
-
-      // if (line[6] !== '') {
-      //   doc = {
-      //     ...doc,
-      //     cement: isNumberMissing(line[6]),
-      //   };
-      // }
-
-      // if (line[7] !== '') {
-      //   doc = {
-      //     ...doc,
-      //     gasflaring: isNumberMissing(line[7]),
-      //   };
-      // }
-
-      // if (line[8] !== '') {
-      //   doc = {
-      //     ...doc,
-      //     percapita: isNumberMissing(line[8]),
-      //   };
-      // }
-
-      // if (line[9] !== '') {
-      //   doc = {
-      //     ...doc,
-      //     bunkerfuels: isNumberMissing(line[9]),
-      //   };
-      // }
 
       const doc = {
         year: isNumberMissing(year),
