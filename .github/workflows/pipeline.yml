@@ -8,10 +8,10 @@ on:
     branches: [master]
     types: [opened, synchronize]
 
-jobs: 
+jobs:
   simple_deployment_pipeline:
-  steps:
     runs-on: ubuntu-18.04
+    steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
@@ -24,3 +24,20 @@ jobs:
         run: npm run build
       - name: test
         run: npm run test
+      - name: deployment
+        if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message)), '#skip') }}
+        uses: akhileshns/heroku-deploy@v3.8.8
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: powerful-headland-78075
+          heroku_email: teemu.kostamo@hotmail.com
+          healthcheck: https://powerful-headland-78075.herokuapp.com/health
+          checkstring: 'ok'
+          rollbackonhealthcheckfailed: true
+      - uses: actions/checkout@v2
+      - name: Bump version and push tag
+        if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message)), '#skip') }}
+        uses: anothrNick/github-tag-action@eca2b69f9e2c24be7decccd0f15fdb1ea5906598
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
