@@ -4,6 +4,7 @@
   "description": "An API providing REST and Graphql endpoints for fetching data on the worst polluters",
   "main": "index.js",
   "scripts": {
+    "build": "npm run initdb",
     "lint": "eslint ./src",
     "initdb": "node seeder.js",
     "start": "cross-env NODE_ENV=production node src",
@@ -22,7 +23,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
     }
   },
   "repository": {
