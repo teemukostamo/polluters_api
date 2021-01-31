@@ -40,6 +40,10 @@ if (process.env.NODE_ENV === 'development') {
 
 app.get('/worst/polluters', getPolluters);
 
+app.get('/healthcheck', (req, res) => {
+  res.send('ok');
+});
+
 app.use(errorHandler);
 
 module.exports = app;
